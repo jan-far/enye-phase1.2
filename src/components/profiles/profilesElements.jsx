@@ -13,7 +13,9 @@ export const ProfileHeader = styled.div`
   font-weight: bolder;
   padding: 15px 0px;
   text-align: center;
-  margin-bottom: 10px;
   background-color: blueviolet;
   color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
 `;

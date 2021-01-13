@@ -12,7 +12,7 @@ class App extends Component {
     super();
     this.state = {
       details: [],
-      orderBy: 'Gender',
+      orderBy: 'LastName',
       queryText: '',
       totalPatients: 0,
       loading: true,
@@ -24,16 +24,14 @@ class App extends Component {
 
   componentDidMount() {
     try {
-      fetch('http://api.enye.tech/v1/challenge/records')
+      fetch('https://api.enye.tech/v1/challenge/records')
         .then((response) => response.json())
         .then(({ size, records }) => {
-          return (this.setState({ totalPatients: size }), records);
+          return (
+            this.setState({ totalPatients: size, loading: false }), records
+          );
         })
-        .then(
-          ({ profiles }) =>
-            this.setState({ details: profiles, loading: false }),
-          this.setState()
-        );
+        .then(({ profiles }) => this.setState({ details: profiles }));
     } catch (error) {
       console.log(error);
     }
@@ -60,21 +58,8 @@ class App extends Component {
       totalPatients,
     } = this.state;
 
-    // Get current patient records
-    const indexOfLastPatient = currentPage * patientPerPage;
-    const indexOfFirstPatient = indexOfLastPatient - patientPerPage;
-    const currentPatient = details.slice(
-      indexOfFirstPatient,
-      indexOfLastPatient
-    );
-
-    // update the current page
-    const paginate = (number) => {
-      this.setState({ currentPage: number });
-    };
-
     //  filter the current page patient records
-    let filteredRecords = currentPatient;
+    let filteredRecords = details;
 
     filteredRecords = filteredRecords
       .sort((a, b) => {
@@ -102,6 +87,19 @@ class App extends Component {
         );
       });
 
+    // Get current patient records, from filteredrecords
+    const indexOfLastPatient = currentPage * patientPerPage;
+    const indexOfFirstPatient = indexOfLastPatient - patientPerPage;
+    const currentPatient = filteredRecords.slice(
+      indexOfFirstPatient,
+      indexOfLastPatient
+    );
+
+    // update the current page
+    const paginate = (number) => {
+      this.setState({ currentPage: number });
+    };
+
     return (
       <>
         <ProfileHeader>Patient Records</ProfileHeader>
@@ -110,7 +108,7 @@ class App extends Component {
           handleChange={this.handleChange}
           changeOrder={this.changeOrder}
         />
-        <ProfilesWithSpinner isLoading={loading} profiles={filteredRecords} />
+        <ProfilesWithSpinner isLoading={loading} profiles={currentPatient} />
         <Pagination
           patientPerPage={patientPerPage}
           totalPatients={totalPatients}

@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/25b66011-8afe-4138-810b-2e826079adba/deploy-status)](https://app.netlify.com/sites/patient-records/deploys)
+
+### Live: [Patient-records](https://patient-records.netlify.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

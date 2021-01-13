@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const SearchFieldContainer = styled.div`
   display: grid;
+  margin-top: 70px;
   grid-template-columns:
     minmax(70%, 0.4fr) minmax(auto, auto)
     minmax(20%, 0.3fr);

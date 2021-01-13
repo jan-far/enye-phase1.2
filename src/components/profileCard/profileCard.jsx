@@ -92,8 +92,9 @@ const ProfileCard = ({
             style={{
               fontWeight: 'bolder',
               fontSize: 'larger',
-              color: 'white',
+              color: '#fcfcfc',
               marginTop: '5px',
+              textAlign: 'center',
             }}
           >
             Other Details

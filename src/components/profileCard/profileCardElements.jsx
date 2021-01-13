@@ -20,6 +20,12 @@ const neumorphic = css`
     rgba(0, 0, 0, 0.22),
     rgba(255, 255, 255, 0.01)
   );
+
+  @media screen and (max-width: 480px) {
+    -webkit-box-shadow: -3px 3px 6px #b8b9be, 3px -3px 6px #a6aed1;
+  box-shadow: -3px 3px 6px #b8b9be, 3px -3px 6px #a6aed1;
+  
+  }
 `;
 
 const ProfileInfoNeumorphic = css`
@@ -50,7 +56,18 @@ const DetailsNeumorphic = css`
       rgba(225, 225, 225, 0),
       rgba(0, 0, 0, 0.1)
     ),
-    linear-gradient(-45deg, rgba(0, 0, 0, 0.), rgba(225, 225, 225, 0.01));
+    linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(225, 225, 225, 0.01));
+
+  @media screen and (max-width: 480px) {
+    -webkit-box-shadow: -3px 3px 10px #353f63, 3px -3px 6px #fff;
+    box-shadow: -3px 3px 10px #353f63, 3px -3px 6px #fff;
+    background: linear-gradient(
+        -180deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(225, 225, 225, .7)
+      ),
+      linear-gradient(-360deg, rgba(0, 0, 0, .6), rgba(225, 225, 225, 1));
+  }
 `;
 
 const OtherDetailsNeumorphic = css`
@@ -65,11 +82,11 @@ const OtherDetailsNeumorphic = css`
 
   @media screen and (max-width: 480px) {
     background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.1),
-        rgba(225, 225, 225, 0.9)
+        -180deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(225, 225, 225, 1)
       ),
-      linear-gradient(-45deg, rgba(0, 0, 0, 1), rgba(225, 225, 225, 0.1));
+      linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(225, 225, 225, 1));
   }
 `;
 
@@ -97,10 +114,12 @@ export const ProfileCardContainer = styled.div`
     align-content: center;
     justify-content: center;
     border-radius: 15px;
+    width: 90%;
   }
 
   @media screen and (max-width: 360px) {
-    width: 360px;
+    width: 355px;
+    margin-bottom: 50px;
   }
 `;
 
@@ -121,15 +140,17 @@ export const Infos = styled.div`
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
+    margin: 5px 0 10px 0;
   }
 
   @media screen and (max-width: 480px) {
     grid-template-columns: 1fr;
     grid-auto-flow: row;
+    margin-bottom: 15px;
   }
 
   @media screen and (max-width: 360px) {
-    width: 100%;
+    width: 90%;
   }
 `;
 
@@ -238,40 +259,6 @@ export const PayMethod = styled.strong`
   font-size: large;
 `;
 
-export const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  margin: 35px 10px;
-  padding: 5px;
-  ${DetailsNeumorphic}
-
-  @media screen and (max-width: 768px) {
-    padding: 10px;
-  }
-
-  @media screen and (max-width: 480px) {
-    padding: 5px;
-  }
-`;
-
-export const OtherDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
-  border-radius: 20px;
-  ${OtherDetailsNeumorphic}
-  margin: 5px;
-
-  @media screen and (max-width: 480px) {
-    margin: 5px 0;
-  }
-`;
-
 export const CreditCard = styled.p`
   ${OtherDetailsStyle}
   font-size: large;
@@ -282,23 +269,92 @@ export const CardType = styled.p`
   font-size: small;
 `;
 
+export const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin: 35px 10px;
+  padding: 15px;
+  ${DetailsNeumorphic}
+
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 5px;
+    width: 90%;
+  }
+
+  @media screen and (max-width: 360px) {
+    width: 80%;
+    padding: 1px;
+    margin: 1px 0 15px;
+  }
+`;
+
+export const OtherDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+  border-radius: 20px;
+  ${OtherDetailsNeumorphic}
+  margin: 5px;
+
+  @media screen and (min-width: 720px) {
+    align-items: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin: 5px 0;
+    width: 95%;
+  }
+
+  @media screen and (max-width: 360px) {
+    width: 90%;
+    align-self: center !important;
+  }
+`;
+
 export const Domain = styled.p`
   ${OtherDetailsStyle}
   font-size: large;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+    margin-left: -15px;
+  }
 `;
 
 export const MacAdd = styled.em`
   ${OtherDetailsStyle}
   font-size: large;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+    margin-left: -15px;
+  }
 `;
 
 export const Url = styled.p`
   ${OtherDetailsStyle}
   font-size: large;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+    margin-left: -75px;
+  }
 `;
 
 export const Align = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 130px minmax(250px, 1fr);
+
+  /* @media screen and (max-width: 360px) {
+    grid-template-columns: 50px, 50px!important;
+  } */
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchFieldContainer, SearchInput, Sort, Option } from './Search';
+import { SearchFieldContainer, SearchInput, Sort, Option } from './SearchElements';
 
 const SearchField = ({ placeholder, handleChange, changeOrder }) => {
   return (
