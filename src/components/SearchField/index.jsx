@@ -1,5 +1,10 @@
 import React from 'react';
-import { SearchFieldContainer, SearchInput, Sort, Option } from './SearchElements';
+import {
+  SearchFieldContainer,
+  SearchInput,
+  Sort,
+  Option,
+} from './SearchElements';
 
 const SearchField = ({ placeholder, handleChange, changeOrder }) => {
   return (
@@ -10,26 +15,17 @@ const SearchField = ({ placeholder, handleChange, changeOrder }) => {
           placeholder={placeholder}
           onChange={handleChange}
         />
-        <Sort>
+        <Sort
+          onChange={({ target: { value } }) =>
+            value === '#' ? null : changeOrder(`${value}`)
+          }
+        >
           <Option value="#"> Sort By: </Option>
-          <Option value="UserName" onClick={() => changeOrder('UserName')}>
-            UserName
-          </Option>
-          <Option value="FirstName" onClick={() => changeOrder('FirstName')}>
-            FirstName
-          </Option>
-          <Option value="LastName" onClick={() => changeOrder('LastName')}>
-            LastName
-          </Option>
-          <Option value="Gender" onClick={() => changeOrder('Gender')}>
-            Gender
-          </Option>
-          <Option
-            value="PaymentMethod"
-            onClick={() => changeOrder('PaymentMethod')}
-          >
-            Payment Method
-          </Option>
+          <Option value="UserName">UserName</Option>
+          <Option value="FirstName">FirstName</Option>
+          <Option value="LastName">LastName</Option>
+          <Option value="Gender">Gender</Option>
+          <Option value="PaymentMethod">Payment Method</Option>
         </Sort>
       </SearchFieldContainer>
     </>
