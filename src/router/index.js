@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { changeBase, getLatest } = require('../controller');
+const { changeBase } = require('../controller');
 const router = Router();
 
 router.get('/', changeBase);
